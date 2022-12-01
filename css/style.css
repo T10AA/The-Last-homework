@@ -1,0 +1,18 @@
+.sliderMainBox {
+    max-width: 800px;
+    height: 600px;
+    background-color: beige;
+    position: relative;
+}
+.LeftArrow {
+    top: 50%;
+    transform: translateY(-50%);
+    left: 40px;
+    position: absolute;
+}
+.RightArrow {
+    top: 50%;
+    transform: translateY(-50%);
+    right: 40px;
+    position: absolute;
+}
