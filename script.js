@@ -50,11 +50,59 @@ function BGimage (item) {
 function Title (item) {
   let SlideTitle = document.createElement('h3');
   SlideTitle.innerText = item.title;
+  SlideTitle.classList.add('Title');
 
   return SlideTitle;
+}
+function CreateDots () {
+  let DotBox = document.createElement('div');
+  DotBox.classList.add('DotMain');
+  
+  data.forEach((element) => {
+    let dot = document.createElement("div");
+    dot.classList.add("dots");
+    DotBox.appendChild(dot);
+  });
+  
+  return DotBox;
 }
 
 function Slider () {
   SliderBox.innerHTML = ' ';
-  
+  let MainDiv = DivTag(data[sliderIndex]);
+  let Image = BGimage(data[sliderIndex]);
+  let imgTitle = Title(data[sliderIndex]);
+  let DotParent = CreateDots();
+
+  MainDiv.appendChild(Image);
+  MainDiv.appendChild(imgTitle);
+  SliderBox.appendChild(MainDiv);
+  MainDiv.appendChild(DotParent);
 }
+function ClickLeftArrow () {
+  if (sliderIndex == 0) {
+    sliderIndex = data.length-1;
+    Slider();
+    return;
+  }
+  sliderIndex--;
+  Slider();
+}
+leftArrow.addEventListener('click', ClickLeftArrow);
+
+function ClickRighttArrow () {
+  if (sliderIndex == data.length-1) {
+    sliderIndex = 0;
+    Slider();
+    return;
+  }
+  sliderIndex++;
+  Slider();
+}
+righttArrow.addEventListener('click', ClickRighttArrow);
+
+setInterval(() => {
+  ClickRighttArrow();
+}, 4000);
+
+Slider();
