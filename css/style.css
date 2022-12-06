@@ -30,9 +30,12 @@
     border-radius: 25%;
     margin-left: 5px;
 }
+.active {
+    border: 1px solid black;
+}
 .BgImage {
     width: 100%;
-    height: 500px;
+    height: 600px;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -42,4 +45,14 @@
     font-weight: 600;
     text-align: center;
     text-decoration: underline;   
+}
+
+
+/* form styling */
+.ErrorText {
+    color: red;
+    font-style: italic;
+}
+.formBox {
+    margin-bottom: 20px;
 }

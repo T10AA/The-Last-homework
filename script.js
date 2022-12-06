@@ -31,6 +31,7 @@ let leftArrow = document.getElementById('LeftArrow');
 let righttArrow = document.getElementById('RightArrow');
 let SliderBox = document.getElementById('imageContainer');
 let sliderIndex = 0;
+let activedot = document.getElementsByClassName('dots');
 
 function DivTag () {
   let Divi = document.createElement('div');
@@ -59,9 +60,15 @@ function CreateDots () {
   DotBox.classList.add('DotMain');
   
   data.forEach((element) => {
-    let dot = document.createElement("div");
+    let dot = document.createElement("div");    
     dot.classList.add("dots");
+    dot.setAttribute('data-id', element.id-1);
     DotBox.appendChild(dot);
+    dot.addEventListener('click', function(event) {
+      let number = event.target.getAttribute("data-id");
+      sliderIndex = number;
+      Slider();
+    });
   });
   
   return DotBox;
@@ -78,6 +85,8 @@ function Slider () {
   MainDiv.appendChild(imgTitle);
   SliderBox.appendChild(MainDiv);
   MainDiv.appendChild(DotParent);
+
+  activedot[sliderIndex].classList.add('active');
 }
 function ClickLeftArrow () {
   if (sliderIndex == 0) {
@@ -138,5 +147,35 @@ registrationForm.addEventListener('submit', function(registration) {
     errors.agreement = "Please, agree terms and contiions";
   }
 
+  document.querySelectorAll('.ErrorText').forEach((item) => {
+    item.innerText = " ";
+  });
   
-})
+  for (let key in errors) {
+    let Errortext = document.getElementById("errors_" + key);
+
+    if (Errortext) {
+      Errortext.innerText = errors[key];
+    }
+  }
+
+  if (Object.keys(errors).length==0) {
+    registrationForm.submit();
+  } 
+  
+});
+
+let passwordArea = document.getElementById('password');
+let icon = document.getElementById('Icon');
+
+icon.addEventListener("click", function () {
+  if (password.type == "password") {
+    passwordArea.setAttribute("type", "text");
+    icon.classList.remove("fa-eye");
+    icon.classList.add("fa-eye-slash");
+  } else {
+    passwordArea.setAttribute("type", "password");
+    icon.classList.remove("fa-eye-slash");
+    icon.classList.add("fa-eye");    
+  }
+});

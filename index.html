@@ -19,22 +19,25 @@
         </div>
     </section>
     <section>
-        <form action="" id="RegForm">
-            <div>
-                <input type="text" name="UserName" id="username" placeholder="User Name">
+
+        <form action="" id="RegForm" method="POST">
+            <div class="formBox">
+                <input type="text" name="UserName" id="username" placeholder="Username">
                 <p class="ErrorText" id="errors_UserName"></p>
             </div>
-            <div>
+            <div class="formBox">
                 <input type="password" name="Password" id="password" placeholder="Enter Password">
+                <i class="fa-regular fa-eye" id="Icon"></i>                
                 <p class="ErrorText" id="errors_Password"></p>
             </div>
-            <div>
+            <div class="formBox">
                 <input type="password" name="RepeatPassword" id="Repeatpassword" placeholder="Repeat your password">
                 <p class="ErrorText" id="errors_RepeatPassword"></p>
             </div>
-            <div>
+            <div class="formBox">
                 <input type="checkbox" name="agreement" id="agreement" />
                 <label for="agreement"> I agree terms and conditions</label>
+                <p class="ErrorText" id="errors_agreement"></p>
             </div>
             <button type="submit">Send</button>
         </form>
