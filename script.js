@@ -106,3 +106,37 @@ setInterval(() => {
 }, 4000);
 
 Slider();
+
+
+// Second homework - form validation
+
+let registrationForm = document.getElementById('RegForm');
+
+registrationForm.addEventListener('submit', function(registration) {
+  registration.preventDefault();
+
+  let errors = {};
+
+  let username = document.getElementById('username').value;
+  if (username == '') {
+    errors.UserName = 'Please, enter username';
+  }
+
+  let password = document.getElementById('password').value;
+  let repeatpassword = document.getElementById('Repeatpassword').value;
+  
+  if (password =='') {
+    errors.Password = 'please, enter password';
+  }
+
+  if (password != repeatpassword) {
+    errors.RepeatPassword = 'Passwords do not match';
+  }
+
+  let CheckBox = document.getElementById('agreement').checked;
+  if (!CheckBox) {
+    errors.agreement = "Please, agree terms and contiions";
+  }
+
+  
+})
